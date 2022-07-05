@@ -1,0 +1,52 @@
+body {
+  text-align: center;
+  background-color: aqua;
+}
+
+header {
+  border-top: 20px solid;
+  border-color: dodgerblue;
+  font-weight: bolder;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+#edge {
+  color: darkcyan;
+}
+
+.link {
+  text-decoration: none;
+  display: block;
+}
+
+p {
+  font-size: 2rem;
+}
+
+.lista-spesa {
+  border: 2px solid;
+  padding: 40px;
+}
+
+.lista-spesa__item {
+  margin-bottom: 20px;
+  font-weight: bold;
+  background-color: coral;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+footer {
+  border-bottom: 20px solid;
+  border-color: dodgerblue;
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+
+.contacts {
+  margin: 30px;
+}

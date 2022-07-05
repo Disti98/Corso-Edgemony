@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,800;1,400;1,800&display=swap");
+
+body {
+  color: #4e9e91;
+  font-family: "Open Sans", sans-serif;
+}
+
+body p {
+  font-size: 1.1rem;
+}
+
+.main-header {
+  display: flex;
+  justify-content: center;
+  height: 180px;
+  background-color: lightgreen;
+}
+
+.main-header img {
+  transform: scale(2);
+}
+
+.main-navbar {
+  border: 2px dotted #17171726;
+  border-width: 3px;
+  background-color: aquamarine;
+}
+
+.main-navbar ul {
+  padding: 0 20px 0 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  list-style-type: none;
+}
+
+.main-navbar a {
+  color: #4e9e91;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.main-navbar a:hover {
+  color: darkgreen;
+}
+
+.main-navbar .link {
+  text-decoration: none;
+}
+
+.hero img {
+  width: 100%;
+  box-shadow: 0 0 4px rgb(23, 23, 23);
+}
+
+.main-content {
+  margin: 40px 10%;
+}
+
+.main-content .main-text {
+  display: flex;
+  justify-content: center;
+}
+
+.main-content .main-text .first,
+.main-content .main-text .second {
+  padding: 20px;
+  text-align: justify;
+}
+
+.main-content .main-text div:first-child {
+  color: darkgreen;
+}
+
+.main-content .main-text .first p,
+.main-content .main-text .second p {
+  padding-left: 20px;
+  border-left: 2px solid;
+}
+
+.main-footer {
+  position: fixed;
+  /* position: absolute; */
+  background-color: white;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  border: 2px dotted #17171726;
+  border-width: 3px;
+  box-sizing: border-box;
+  background-color: aquamarine;
+}
+
+.main-footer p {
+  font-weight: 800;
+  text-align: center;
+}
