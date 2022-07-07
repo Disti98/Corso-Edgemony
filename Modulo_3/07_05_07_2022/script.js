@@ -154,11 +154,8 @@ $buttonPages.addEventListener("click", (event) => {
 const $productsContainer = document.querySelector(".products");
 
 $productsContainer.addEventListener("click", (event) => {
-  if (event.target.tagName === "LI") {
-    shop.idValue = event.target.id;
-    shop.getPrice;
-  } else if (event.target.parentNode.tagName === "LI") {
-    shop.idValue = event.target.parentNode.id;
+  if (event.target.closest("li")) {
+    shop.idValue = event.target.closest("li").id;
     shop.getPrice;
   }
 });
