@@ -1,0 +1,92 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.task_container {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10% 0;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+.title {
+  border: 2px dotted black;
+  padding: 5px;
+}
+
+.input_text {
+  border-radius: 5px;
+  border-style: outset;
+  background-color: #f3f3f3;
+  padding: 2px;
+}
+
+.input_text:focus {
+  outline: none;
+  background-color: rgb(200, 200, 200);
+}
+
+.input_text:focus::placeholder {
+  color: transparent;
+}
+
+.send_task {
+  border-radius: 5px;
+}
+
+.send_task:hover {
+  background-color: rgb(200, 200, 200);
+}
+
+.send_task:active {
+  background-color: rgb(150, 150, 150);
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.215);
+}
+
+.task_ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.5rem;
+  align-self: flex-start;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.element {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.task_ul li div input[type="checkbox"]:checked {
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+.task_ul li div input[type="checkbox"]:checked + .text_articles {
+  text-decoration: line-through;
+}
+
+.delete {
+  padding: 0 3.75px;
+  background-color: brown;
+  border: 1px solid;
+  border-radius: 5px;
+}
+
+.delete:hover {
+  background-color: coral;
+}

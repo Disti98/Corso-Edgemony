@@ -1,6 +1,11 @@
+const $taskUl = document.querySelector(".task_ul");
+const $inputTask = document.querySelector(".form_input");
+const $inputText = document.querySelector(".input_text");
+
+// gen string for HTML
 const getElementHTML = (el) => {
-  return `<li class="element"><input type="checkbox">
-            <span class="text-articles">${el}</span>
+  return `<li class="element"><div><input type="checkbox">
+            <span class="text_articles">${el}</span></div>
             <span id="${taskListMain.loadTask.indexOf(
               el
             )}" class="delete">X</span></li>`;
@@ -31,29 +36,24 @@ const taskListMain = {
     this.renderHTML();
   },
 
+  /**
+   * @param {never[]} el
+   */
   set retrieveTask(el) {
     this._taskList = el;
   },
 
   renderHTML() {
-    const $taskUl = document.querySelector(".task_ul");
     const taskString = this.loadTask.map(getElementHTML).join("");
     $taskUl.innerHTML = `${taskString}`;
   },
 };
 
-const $inputTask = document.querySelector(".form_input");
-
+// submit messages
 $inputTask.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const $inputText = document.querySelector("input");
-
-  const d = new Date();
-  let h = d.getHours();
-  let m = d.getMinutes();
-  let s = d.getSeconds();
-  let time = h + ":" + m + ":" + s;
+  let time = `${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`;
   taskListMain.saveTask = `${$inputText.value} - ${time}`;
   localStorage.setItem("storedList", JSON.stringify(taskListMain.loadTask));
   $inputText.value = "";
@@ -61,8 +61,7 @@ $inputTask.addEventListener("submit", (event) => {
   console.log(taskListMain.loadTask);
 });
 
-const $taskUl = document.querySelector(".task_ul");
-
+// delete messages
 $taskUl.addEventListener("click", (event) => {
   if (event.target.className === "delete") {
     taskListMain.removeTask = Number(event.target.id);
@@ -72,16 +71,11 @@ $taskUl.addEventListener("click", (event) => {
   console.log(taskListMain.loadTask);
 });
 
-if (
-  JSON.parse(localStorage.getItem("storedList") === null)
-  //  || JSON.parse(localStorage.getItem("storedList")) === undefined
-  //
-) {
-  localStorage.setItem("storedList", JSON.stringify(["Inserisci task..."]));
+// local storage
+if (JSON.parse(localStorage.getItem("storedList"))) {
+  const retrievedList = JSON.parse(localStorage.getItem("storedList"));
+  taskListMain.retrieveTask = retrievedList;
+  taskListMain.renderHTML();
 }
-
-const retrievedList = JSON.parse(localStorage.getItem("storedList"));
-taskListMain.retrieveTask = retrievedList;
-taskListMain.renderHTML();
 
 console.log(taskListMain.loadTask);
