@@ -11,6 +11,7 @@ body {
 }
 
 .task_container {
+  min-height: 700px;
   width: 500px;
   display: flex;
   flex-direction: column;
