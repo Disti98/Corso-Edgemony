@@ -24,7 +24,7 @@ $srcForm.addEventListener("submit", (event) => {
       $resultList.innerHTML = json.docs
         .map((doc) => {
           return `<li class="element">
-                    <img src="https://picsum.photos/100/150?${doc.title}">
+                    <img src="https://picsum.photos/336/504?${doc.title}">
                     <span class="book_title">${doc.title}</span>
                   </li>`;
         })
