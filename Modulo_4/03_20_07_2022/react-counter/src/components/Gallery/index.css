@@ -1,0 +1,14 @@
+.gallery-main {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.2);
+  margin: 80px;
+}
+
+.gallery-main img {
+  border-radius: 10px;
+}
