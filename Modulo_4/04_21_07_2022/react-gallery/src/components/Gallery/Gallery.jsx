@@ -1,5 +1,6 @@
 import ImageCard from "../ImageCard";
 import galleryMock from "../../assets/galleryMock";
+
 import "./index.css";
 
 const Gallery = ({ visibility }) => {
