@@ -1,7 +1,7 @@
 import "./index.css";
 
-const Button = ({ action, text, id }) => (
-  <button onClick={action} id={id} className="btn">
+const Button = ({ action, type, text, id }) => (
+  <button onClick={action} type={type} id={id} className="btn">
     {text}
   </button>
 );

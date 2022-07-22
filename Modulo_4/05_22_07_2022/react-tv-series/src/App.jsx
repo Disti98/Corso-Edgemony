@@ -5,6 +5,8 @@ import myList from "./assets/mockAPI";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import "./App.css";
+import AddMovie from "./components/AddMovie/AddMovie";
+// import Input from "./components/Input";
 
 function App() {
   const [modalData, setModalData] = useState({});
@@ -28,6 +30,8 @@ function App() {
         BASE_URL="https://edgemony-backend.herokuapp.com/movies"
         modalVisibility={onHandleModal}
       />
+      <AddMovie BASE_URL="https://edgemony-backend.herokuapp.com/movies" />
+      {/* Addmovie */}
       <CardList
         title="My List"
         localList={myList}

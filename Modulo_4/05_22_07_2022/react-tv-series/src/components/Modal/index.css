@@ -1,5 +1,5 @@
 .Modal {
-  position: absolute;
+  position: fixed;
   top: 20%;
   left: calc(50% - 300px);
   width: 600px;
@@ -13,7 +13,7 @@
 }
 
 .Modal__overlay {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.85);
