@@ -4,7 +4,7 @@ import Button from "../Button";
 import Input from "../Input";
 import "./index.css";
 
-const AddMovie = ({ BASE_URL }) => {
+const AddMovie = ({ BASE_URL, check, toggle }) => {
   const [inputTitleEl, setInputTitleEl] = useState("");
   const [inputUrlEl, setInputUrlEl] = useState("");
   const [inputDescriptionEl, setInputDescriptionEl] = useState("");
@@ -26,9 +26,14 @@ const AddMovie = ({ BASE_URL }) => {
 
   useEffect(() => {
     if (Object.keys(body).length > 0) {
-      POST(BASE_URL, body);
+      POST(BASE_URL, body).then(toggle(!check));
+      setBody({});
+      setInputTitleEl("");
+      setInputUrlEl("");
+      setInputDescriptionEl("");
+      setBody({});
     }
-  }, [BASE_URL, body]);
+  }, [body]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="addmovie-main">

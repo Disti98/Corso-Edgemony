@@ -4,11 +4,11 @@ import Modal from "./components/Modal";
 import myList from "./assets/mockAPI";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import "./App.css";
 import AddMovie from "./components/AddMovie/AddMovie";
-// import Input from "./components/Input";
+import "./App.css";
 
 function App() {
+  const [isPosted, setIsPosted] = useState(false);
   const [modalData, setModalData] = useState({});
   const [isModalVisibile, setModalVisibility] = useState(false);
 
@@ -29,9 +29,14 @@ function App() {
         title="Top Movies"
         BASE_URL="https://edgemony-backend.herokuapp.com/movies"
         modalVisibility={onHandleModal}
+        check={isPosted}
+        toggle={setIsPosted}
       />
-      <AddMovie BASE_URL="https://edgemony-backend.herokuapp.com/movies" />
-      {/* Addmovie */}
+      <AddMovie
+        BASE_URL="https://edgemony-backend.herokuapp.com/movies"
+        check={isPosted}
+        toggle={setIsPosted}
+      />
       <CardList
         title="My List"
         localList={myList}

@@ -2,23 +2,45 @@ import { useState, useEffect } from "react";
 import Card from "../Card";
 import "./index.css";
 
-const CardList = ({ title, BASE_URL, modalVisibility, localList }) => {
+const CardList = ({
+  title,
+  BASE_URL,
+  modalVisibility,
+  localList,
+  check,
+  toggle,
+}) => {
   const [seriesList, setSeriesList] = useState([]);
 
   const removeBrokenSerie = (list, id) =>
     list.filter((serie) => serie.id !== id);
 
   useEffect(() => {
-    BASE_URL
-      ? fetch(BASE_URL)
-          .then((res) => res.json())
-          .then((data) =>
-            setSeriesList(
-              removeBrokenSerie(data, "7b3b3475-8061-4490-a411-6e8498138dae")
-            )
+    if (BASE_URL) {
+      fetch(BASE_URL)
+        .then((res) => res.json())
+        .then((data) =>
+          setSeriesList(
+            removeBrokenSerie(data, "7b3b3475-8061-4490-a411-6e8498138dae")
           )
-      : setSeriesList(localList);
-  }, [BASE_URL, localList]);
+        );
+    } else {
+      setSeriesList(localList);
+    }
+  }, [check]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    if (check === true) {
+      fetch(BASE_URL)
+        .then((res) => res.json())
+        .then((data) =>
+          setSeriesList(
+            removeBrokenSerie(data, "7b3b3475-8061-4490-a411-6e8498138dae")
+          )
+        )
+        .then(toggle(!check));
+    }
+  }, [check]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="CardList">
