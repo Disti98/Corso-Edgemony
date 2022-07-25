@@ -8,7 +8,7 @@ const MessageCardList = ({ BASE_URL }) => {
 
   useEffect(() => {
     GET(BASE_URL).then((data) => setMessageList(data));
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="MessageCardList">
