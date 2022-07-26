@@ -6,6 +6,7 @@ import "./App.css";
 
 function App() {
   const [isPosted, setIsPosted] = useState(false);
+  const [filterValue, setFilterValue] = useState();
 
   return (
     <div className="App">
@@ -18,10 +19,18 @@ function App() {
           isPosted={isPosted}
           setIsPosted={setIsPosted}
         />
+        <input
+          type="text"
+          className="Filter__input"
+          placeholder="Filtra..."
+          onChange={(e) => setFilterValue(e.target.value)}
+        />
         <MessageCardList
           BASE_URL="https://edgemony-backend.herokuapp.com/messages"
           isPosted={isPosted}
           setIsPosted={setIsPosted}
+          filterValue={filterValue}
+          setFilterValue={setFilterValue}
         />
       </div>
     </div>
