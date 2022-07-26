@@ -11,7 +11,10 @@ function App() {
   return (
     <div className="App">
       <div className="App_friends">
-        <FriendCardList BASE_URL="https://edgemony-backend.herokuapp.com/friends" />
+        <FriendCardList
+          BASE_URL="https://edgemony-backend.herokuapp.com/friends"
+          setFilterValue={setFilterValue}
+        />
       </div>
       <div className="App_messages">
         <AddMessage
@@ -30,7 +33,6 @@ function App() {
           isPosted={isPosted}
           setIsPosted={setIsPosted}
           filterValue={filterValue}
-          setFilterValue={setFilterValue}
         />
       </div>
     </div>

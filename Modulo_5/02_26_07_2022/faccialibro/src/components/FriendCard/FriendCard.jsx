@@ -1,8 +1,8 @@
 import "./index.css";
 
-const FriendCard = ({ friend }) => {
+const FriendCard = ({ friend, setFilterValue }) => {
   return (
-    <div className="FriendCard">
+    <div className="FriendCard" onClick={() => setFilterValue(friend.name)}>
       <img className="avatar" src={friend.photo} alt="profile" />
       <h4 className="name">{friend.name}</h4>
     </div>
