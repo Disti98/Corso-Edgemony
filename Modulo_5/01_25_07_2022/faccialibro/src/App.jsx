@@ -6,7 +6,7 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <div className="App__friends">
+      <div className="App_friends">
         <FriendCardList BASE_URL="https://edgemony-backend.herokuapp.com/friends" />
       </div>
       <div className="App_messages">

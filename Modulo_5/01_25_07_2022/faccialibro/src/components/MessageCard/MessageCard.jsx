@@ -8,9 +8,9 @@ const MessageCard = ({ textContent, onHandleClick }) => {
         <p className="MessageCard__info--sender">{textContent.sender}</p>
         <p className="MessageCard__info--date">{textContent.date}</p>
       </div>
-      <p className="MessageCard__delete" onClick={onHandleClick}>
+      <button className="MessageCard__delete" onClick={onHandleClick}>
         X
-      </p>
+      </button>
     </div>
   );
 };
