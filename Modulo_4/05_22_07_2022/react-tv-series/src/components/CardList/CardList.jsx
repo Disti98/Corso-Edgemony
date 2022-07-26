@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { GET } from "../../utils/api";
 import Card from "../Card";
 import "./index.css";
 
@@ -7,8 +8,7 @@ const CardList = ({
   BASE_URL,
   modalVisibility,
   localList,
-  check,
-  toggle,
+  isPosted,
 }) => {
   const [seriesList, setSeriesList] = useState([]);
 
@@ -17,30 +17,29 @@ const CardList = ({
 
   useEffect(() => {
     if (BASE_URL) {
-      fetch(BASE_URL)
-        .then((res) => res.json())
-        .then((data) =>
-          setSeriesList(
-            removeBrokenSerie(data, "7b3b3475-8061-4490-a411-6e8498138dae")
-          )
+      GET(BASE_URL).then((data) => {
+        console.log(data);
+        setSeriesList(
+          removeBrokenSerie(data, "7b3b3475-8061-4490-a411-6e8498138dae")
         );
+      });
     } else {
       setSeriesList(localList);
     }
-  }, [check]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [isPosted]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  useEffect(() => {
-    if (check === true) {
-      fetch(BASE_URL)
-        .then((res) => res.json())
-        .then((data) =>
-          setSeriesList(
-            removeBrokenSerie(data, "7b3b3475-8061-4490-a411-6e8498138dae")
-          )
-        )
-        .then(toggle(!check));
-    }
-  }, [check]); // eslint-disable-line react-hooks/exhaustive-deps
+  // useEffect(() => {
+  //   if (isPosted === true) {
+  //     fetch(BASE_URL)
+  //       .then((res) => res.json())
+  //       .then((data) =>
+  //         setSeriesList(
+  //           removeBrokenSerie(data, "7b3b3475-8061-4490-a411-6e8498138dae")
+  //         )
+  //       )
+  //       .then(toggle(!isPosted));
+  //   }
+  // }, [isPosted]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="CardList">
@@ -55,7 +54,7 @@ const CardList = ({
             />
           ))
         ) : (
-          <p>loading...</p>
+          <p>Loading...</p>
         )}
       </div>
     </div>

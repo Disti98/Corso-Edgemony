@@ -1,7 +1,7 @@
 import { useState } from "react";
 import CardList from "./components/CardList";
 import Modal from "./components/Modal";
-import myList from "./assets/mockAPI";
+import myList from "./utils/mockAPI";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import AddMovie from "./components/AddMovie/AddMovie";
@@ -29,13 +29,12 @@ function App() {
         title="Top Movies"
         BASE_URL="https://edgemony-backend.herokuapp.com/movies"
         modalVisibility={onHandleModal}
-        check={isPosted}
-        toggle={setIsPosted}
+        isPosted={isPosted}
       />
       <AddMovie
         BASE_URL="https://edgemony-backend.herokuapp.com/movies"
-        check={isPosted}
-        toggle={setIsPosted}
+        isPosted={isPosted}
+        setIsPosted={setIsPosted}
       />
       <CardList
         title="My List"

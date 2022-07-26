@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { POST } from "../../assets/api";
+import { POST } from "../../utils/api";
 import Button from "../Button";
 import Input from "../Input";
 import "./index.css";
 
-const AddMovie = ({ BASE_URL, check, toggle }) => {
+const AddMovie = ({ BASE_URL, isPosted, setIsPosted }) => {
   const [inputTitleEl, setInputTitleEl] = useState("");
   const [inputUrlEl, setInputUrlEl] = useState("");
   const [inputDescriptionEl, setInputDescriptionEl] = useState("");
@@ -12,26 +12,24 @@ const AddMovie = ({ BASE_URL, check, toggle }) => {
 
   const addMovieEvent = async (e) => {
     e.preventDefault();
-
     if (inputTitleEl !== "" && inputUrlEl !== "" && inputDescriptionEl !== "") {
       setBody({
         title: inputTitleEl,
         poster: inputUrlEl,
         description: inputDescriptionEl,
       });
-    } else {
-      alert("Compila tutti i campi!");
-    }
+      setInputTitleEl("");
+      setInputUrlEl("");
+      setInputDescriptionEl("");
+    } else alert("Compila tutti i campi!");
   };
 
   useEffect(() => {
     if (Object.keys(body).length > 0) {
-      POST(BASE_URL, body).then(toggle(!check));
-      setBody({});
-      setInputTitleEl("");
-      setInputUrlEl("");
-      setInputDescriptionEl("");
-      setBody({});
+      POST(BASE_URL, body).then(() => {
+        setIsPosted(!isPosted);
+        setBody({});
+      });
     }
   }, [body]); // eslint-disable-line react-hooks/exhaustive-deps
 
