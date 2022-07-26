@@ -4,6 +4,13 @@
   justify-content: space-between;
 }
 
+.App__Filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
 .App_messages {
   padding: 20px;
   width: 400px;
