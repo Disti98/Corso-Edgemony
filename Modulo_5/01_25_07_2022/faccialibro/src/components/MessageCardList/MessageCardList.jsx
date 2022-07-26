@@ -3,12 +3,12 @@ import { DELETE, GET } from "../../utils/api";
 import MessageCard from "../MessageCard";
 import "./index.css";
 
-const MessageCardList = ({ BASE_URL }) => {
+const MessageCardList = ({ BASE_URL, isPosted, setIsPosted }) => {
   const [messageList, setMessageList] = useState([]);
 
   useEffect(() => {
     GET(BASE_URL).then((data) => setMessageList(data));
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [isPosted]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="MessageCardList">
@@ -19,9 +19,7 @@ const MessageCardList = ({ BASE_URL }) => {
             <MessageCard
               textContent={message}
               onHandleClick={() =>
-                DELETE(BASE_URL, message.id).then(() =>
-                  window.location.reload()
-                )
+                DELETE(BASE_URL, message.id).then(() => setIsPosted(!isPosted))
               }
               key={message.id}
             />

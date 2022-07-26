@@ -4,8 +4,7 @@ import { POST } from "../../utils/api.js";
 import Button from "../Button";
 import "./index.css";
 
-const AddMessage = ({ BASE_URL }) => {
-  // Controlled component!!! - Forms e input
+const AddMessage = ({ BASE_URL, isPosted, setIsPosted }) => {
   const [messageText, setMessageText] = useState("");
   const [sender, setSender] = useState("");
 
@@ -17,12 +16,11 @@ const AddMessage = ({ BASE_URL }) => {
         text: messageText,
         sender: sender,
         date: new Date().toLocaleDateString(),
-      })
-        .then(() => {
-          setMessageText("");
-          setSender("");
-        })
-        .then(() => window.location.reload());
+      }).then(() => {
+        setMessageText("");
+        setSender("");
+        setIsPosted(!isPosted);
+      });
     }
   };
 
