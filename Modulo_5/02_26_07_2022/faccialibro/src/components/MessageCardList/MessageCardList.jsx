@@ -3,23 +3,36 @@ import { DELETE, GET } from "../../utils/api";
 import MessageCard from "../MessageCard";
 import "./index.css";
 
-const MessageCardList = ({ BASE_URL, isPosted, setIsPosted, filterValue }) => {
+const MessageCardList = ({
+  BASE_URL,
+  isPosted,
+  setIsPosted,
+  filterValue,
+  update,
+  setUpdate,
+}) => {
   const [messageList, setMessageList] = useState([]);
 
   useEffect(() => {
-    GET(BASE_URL).then((data) => {
-      if (filterValue) {
-        setMessageList(
-          data
-            .filter((message) =>
-              message.sender.toLowerCase().includes(filterValue.toLowerCase())
-            )
-            .sort((a, b) => (a.date < b.date ? 1 : -1))
-        );
-      } else {
-        setMessageList(data.sort((a, b) => (a.date < b.date ? 1 : -1)));
-      }
-    });
+    const updateFunc = () =>
+      GET(BASE_URL).then((data) => {
+        if (filterValue) {
+          setMessageList(
+            data
+              .filter((message) =>
+                message.sender.toLowerCase().includes(filterValue.toLowerCase())
+              )
+              .sort((a, b) => (a.date < b.date ? 1 : -1))
+          );
+        } else {
+          setMessageList(data.sort((a, b) => (a.date < b.date ? 1 : -1)));
+        }
+      });
+    updateFunc();
+
+    setUpdate(setInterval(() => updateFunc(), 5000));
+
+    // return () => clearTimeout(update);
   }, [isPosted, filterValue]);
 
   return (

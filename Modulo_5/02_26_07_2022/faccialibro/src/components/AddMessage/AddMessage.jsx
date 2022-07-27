@@ -4,7 +4,7 @@ import { POST } from "../../utils/api.js";
 import Button from "../Button";
 import "./index.css";
 
-const AddMessage = ({ BASE_URL, isPosted, setIsPosted }) => {
+const AddMessage = ({ BASE_URL, isPosted, setIsPosted, update }) => {
   const [messageText, setMessageText] = useState("");
   const [sender, setSender] = useState("");
 
@@ -16,11 +16,13 @@ const AddMessage = ({ BASE_URL, isPosted, setIsPosted }) => {
         text: messageText,
         sender: sender,
         date: new Date().toLocaleDateString(),
-      }).then(() => {
-        setMessageText("");
-        setSender("");
-        setIsPosted(!isPosted);
-      });
+      })
+        .then(() => clearInterval(update))
+        .then(() => {
+          setMessageText("");
+          setSender("");
+          setIsPosted(!isPosted);
+        });
     }
   };
 

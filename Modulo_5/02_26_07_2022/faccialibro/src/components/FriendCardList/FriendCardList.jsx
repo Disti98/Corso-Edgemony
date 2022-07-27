@@ -3,7 +3,7 @@ import { GET } from "../../utils/api";
 import FriendCard from "../FriendCard";
 import "./index.css";
 
-const FriendCardList = ({ BASE_URL, setFilterValue }) => {
+const FriendCardList = ({ BASE_URL, setFilterValue, update }) => {
   const [friendList, setFriendList] = useState([]);
 
   useEffect(() => {
@@ -17,6 +17,7 @@ const FriendCardList = ({ BASE_URL, setFilterValue }) => {
           <FriendCard
             friend={friend}
             setFilterValue={setFilterValue}
+            update={update}
             key={friend.id}
           />
         ))

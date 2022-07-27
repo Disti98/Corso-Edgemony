@@ -2,6 +2,7 @@
   color: rgb(24, 24, 24);
   display: flex;
   justify-content: space-between;
+  max-width: 100vw;
 }
 
 .App__Filter {

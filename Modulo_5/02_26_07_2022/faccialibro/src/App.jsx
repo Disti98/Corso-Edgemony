@@ -8,6 +8,7 @@ import Button from "./components/Button";
 function App() {
   const [isPosted, setIsPosted] = useState(false);
   const [filterValue, setFilterValue] = useState();
+  const [update, setUpdate] = useState();
 
   return (
     <div className="App">
@@ -15,6 +16,7 @@ function App() {
         <FriendCardList
           BASE_URL="https://edgemony-backend.herokuapp.com/friends"
           setFilterValue={setFilterValue}
+          update={update}
         />
       </div>
       <div className="App_messages">
@@ -22,13 +24,17 @@ function App() {
           BASE_URL="https://edgemony-backend.herokuapp.com/messages"
           isPosted={isPosted}
           setIsPosted={setIsPosted}
+          update={update}
         />
         <div className="App__Filter">
           <input
             type="text"
             className="Filter__input"
             placeholder="Filtra..."
-            onChange={(e) => setFilterValue(e.target.value)}
+            onChange={(e) => {
+              clearInterval(update);
+              setFilterValue(e.target.value);
+            }}
           />
           <Button
             btnClass="Button__clear--filter"
@@ -44,6 +50,7 @@ function App() {
           isPosted={isPosted}
           setIsPosted={setIsPosted}
           filterValue={filterValue}
+          setUpdate={setUpdate}
         />
       </div>
     </div>
