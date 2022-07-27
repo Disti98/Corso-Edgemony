@@ -17,7 +17,6 @@ const AddMessage = ({ BASE_URL, isPosted, setIsPosted, update }) => {
         sender: sender,
         date: new Date().toLocaleDateString(),
       }).then(() => {
-        // clearInterval(update);
         setMessageText("");
         setSender("");
         setIsPosted(!isPosted);

@@ -6,13 +6,7 @@ import "./index.css";
 const FriendCard = ({ friend, setFilterValue, update, deleteHandle }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   return (
-    <div
-      className="FriendCard"
-      onClick={() => {
-        clearInterval(update);
-        setFilterValue(friend.name);
-      }}
-    >
+    <div className="FriendCard" onClick={() => setFilterValue(friend.name)}>
       <img className="avatar" src={friend.photo} alt="profile" />
       <h4 className="name">{friend.name}</h4>
       <Button

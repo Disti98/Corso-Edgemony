@@ -16,7 +16,6 @@ const AddFriend = ({ BASE_URL, isPosted, setIsPosted, update }) => {
         name: friendName,
         photo: photo,
       }).then(() => {
-        // clearInterval(update);
         setFriendName("");
         setPhoto("");
         setIsPosted(!isPosted);

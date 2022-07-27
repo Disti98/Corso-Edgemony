@@ -26,7 +26,6 @@ const FriendCardList = ({
             update={update}
             deleteHandle={() =>
               DELETE(BASE_URL, friend.id).then(() => {
-                // clearInterval(update);
                 setFilterValue();
                 setIsPosted(!isPosted);
               })

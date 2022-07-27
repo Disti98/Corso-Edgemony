@@ -24,7 +24,7 @@ const MessageCardList = ({ BASE_URL, isPosted, setIsPosted, filterValue }) => {
     updateFunction();
     const updateInterval = setInterval(() => updateFunction(), 5000);
     return () => clearInterval(updateInterval);
-  }, [isPosted, filterValue]);
+  }, [isPosted, filterValue]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="MessageCardList">
@@ -36,7 +36,6 @@ const MessageCardList = ({ BASE_URL, isPosted, setIsPosted, filterValue }) => {
               textContent={message}
               deleteHandle={() =>
                 DELETE(BASE_URL, message.id).then(() => {
-                  // clearInterval(update);
                   setIsPosted(!isPosted);
                 })
               }
