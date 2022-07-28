@@ -22,7 +22,7 @@ const MessageCard = ({ textContent, deleteHandle }) => {
       {isModalVisible && (
         <Modal
           textContent={"Sei sicuro di voler eliminare il messaggio?"}
-          deleteHandle={deleteHandle}
+          functionHandle={deleteHandle}
           setIsModalVisibile={setIsModalVisible}
         />
       )}

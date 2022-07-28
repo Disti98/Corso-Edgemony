@@ -13,7 +13,9 @@ const FriendCardList = ({
   const [friendList, setFriendList] = useState([]);
 
   useEffect(() => {
-    GET(BASE_URL).then((data) => setFriendList(data));
+    GET(BASE_URL).then((data) =>
+      setFriendList(data.sort((a, b) => (a.name < b.name ? -1 : 1)))
+    );
   }, [isPosted]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import FriendCardList from "./components/FriendCardList";
 import AddMessage from "./components/AddMessage";
 import MessageCardList from "./components/MessageCardList";
@@ -6,13 +6,29 @@ import Button from "./components/Button";
 import AddFriend from "./components/AddFriend/AddFriend";
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
+import Splashscreen from "./components/SplashScreen";
 
 function App() {
   const [isPosted, setIsPosted] = useState(false);
   const [filterValue, setFilterValue] = useState();
+  const [isSplashscreenVisible, setIsSplashscreenVisible] = useState(true);
+
+  // const onGetUsername = () => {
+  //   const username = prompt("Inserisci il tuo username:");
+  //   if (username) {
+  //     localStorage.setItem("username", username);
+  //   } else {
+  //     localStorage.setItem("username", "Anonymous");
+  //   }
+  // };
+
+  // useEffect(() => onGetUsername(), []);
 
   return (
     <div className="App">
+      {isSplashscreenVisible && (
+        <Splashscreen setIsSplashscreenVisible={setIsSplashscreenVisible} />
+      )}
       <Navbar textLogo={"Faccialibro"} />
       <div className="App__main">
         <div className="App_friends">

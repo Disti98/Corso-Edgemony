@@ -1,7 +1,7 @@
 import "./index.css";
 import Button from "../Button";
 
-const Modal = ({ textContent, deleteHandle, setIsModalVisibile }) => {
+const Modal = ({ textContent, functionHandle, setIsModalVisibile }) => {
   return (
     <div className="Modal__overlay">
       <div className="Modal">
@@ -10,7 +10,7 @@ const Modal = ({ textContent, deleteHandle, setIsModalVisibile }) => {
           <Button
             btnClass="Modal__confirm"
             textContent="Sì!"
-            onHandleClick={deleteHandle}
+            onHandleClick={functionHandle}
           />
           <Button
             btnClass="Modal__cancel"
