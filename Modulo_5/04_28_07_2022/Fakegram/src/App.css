@@ -1,0 +1,29 @@
+.App__main {
+  color: rgb(24, 24, 24);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 100vw;
+  background-color: rgb(65, 65, 65);
+}
+
+.App__Filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 20px;
+  border-radius: 6px;
+  box-shadow: 0 0 2px rgba(24, 24, 24, 0.45);
+  background-color: rgb(175, 175, 175);
+  margin-bottom: 40px;
+}
+
+.App_messages {
+  padding: 20px;
+  width: 400px;
+}
+
+.App_friends {
+  padding: 20px;
+  width: 400px;
+}
