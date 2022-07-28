@@ -23,6 +23,7 @@ const FriendCard = ({
           textContent={"Sei sicuro di voler eliminare il messaggio?"}
           functionHandle={deleteHandle}
           setIsModalVisibile={setIsModalVisible}
+          type="delete"
         />
       )}
     </div>

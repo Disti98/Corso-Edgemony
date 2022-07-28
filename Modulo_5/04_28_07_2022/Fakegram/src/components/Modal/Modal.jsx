@@ -34,7 +34,8 @@ const Modal = ({ textContent, functionHandle, setIsModalVisible, type }) => {
         />
       </form>
     );
-  } else {
+  }
+  if (type === "delete") {
     return (
       <div className="Modal__overlay">
         <div className="Modal">

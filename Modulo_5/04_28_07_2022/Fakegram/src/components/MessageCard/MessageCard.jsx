@@ -27,6 +27,7 @@ const MessageCard = ({
           textContent={"Sei sicuro di voler eliminare il messaggio?"}
           functionHandle={deleteHandle}
           setIsModalVisible={setIsModalVisible}
+          type="delete"
         />
       )}
     </div>
