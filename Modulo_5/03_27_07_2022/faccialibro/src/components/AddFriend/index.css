@@ -4,6 +4,9 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  border-radius: 6px;
+  box-shadow: 0 0 2px rgba(24, 24, 24, 0.45);
+  background-color: rgb(175, 175, 175);
 }
 
 .AddFriend input {
