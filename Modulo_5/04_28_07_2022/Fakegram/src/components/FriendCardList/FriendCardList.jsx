@@ -30,6 +30,7 @@ const FriendCardList = ({
             update={update}
             deleteHandle={() =>
               DELETE(BASE_URL, friend.id).then(() => {
+                setIsModalVisible(false);
                 setFilterValue();
                 setIsPosted(!isPosted);
               })

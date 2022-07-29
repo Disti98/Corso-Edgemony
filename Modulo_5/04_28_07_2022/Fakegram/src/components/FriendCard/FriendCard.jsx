@@ -20,9 +20,9 @@ const FriendCard = ({
       />
       {isModalVisible && (
         <Modal
-          textContent={"Sei sicuro di voler eliminare il messaggio?"}
+          textContent={"Sei sicuro di voler eliminare l'amico?"}
           functionHandle={deleteHandle}
-          setIsModalVisibile={setIsModalVisible}
+          setIsModalVisible={setIsModalVisible}
           type="delete"
         />
       )}

@@ -43,6 +43,7 @@ const MessageCardList = ({
               textContent={message}
               deleteHandle={() =>
                 DELETE(BASE_URL, message.id).then(() => {
+                  setIsModalVisible(false);
                   setIsPosted(!isPosted);
                 })
               }
