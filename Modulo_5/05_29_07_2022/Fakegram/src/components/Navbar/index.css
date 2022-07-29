@@ -1,0 +1,22 @@
+.Navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  border-bottom: 5px solid black;
+  background-color: rgb(175, 175, 175);
+}
+
+.Navbar__main {
+  display: flex;
+  align-items: center;
+}
+
+.Navbar__title {
+  margin: 0;
+}
+
+.Navbar__links {
+  display: flex;
+  gap: 10px;
+}
