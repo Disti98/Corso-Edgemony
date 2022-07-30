@@ -4,7 +4,7 @@ import { POST } from "../../utils/api.js";
 import Button from "../Button";
 import "./index.css";
 
-const AddFriend = ({ BASE_URL, isPosted, setIsPosted }) => {
+const AddFriend = ({ BASE_URL, isPosted, setIsPosted, setIsLoginVisible }) => {
   const [friendName, setFriendName] = useState("");
   const [photo, setPhoto] = useState("");
 
@@ -12,14 +12,16 @@ const AddFriend = ({ BASE_URL, isPosted, setIsPosted }) => {
     e.preventDefault();
 
     if (friendName && photo) {
-      POST(BASE_URL, {
-        name: friendName,
-        photo: photo,
-      }).then(() => {
-        setFriendName("");
-        setPhoto("");
-        setIsPosted(!isPosted);
-      });
+      localStorage.getItem("username")
+        ? POST(BASE_URL, {
+            name: friendName,
+            photo: photo,
+          }).then(() => {
+            setFriendName("");
+            setPhoto("");
+            setIsPosted(!isPosted);
+          })
+        : setIsLoginVisible(true);
     }
   };
 

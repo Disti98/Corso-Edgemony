@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
-import { DELETE, GET } from "../../utils/api";
+import { GET } from "../../utils/api";
 import MessageCard from "../MessageCard";
 import "./index.css";
 
 const MessageCardList = ({
   BASE_URL,
   isPosted,
-  setIsPosted,
   filterValue,
-  isModalVisible,
   setIsModalVisible,
+  setDeleteId,
+  setDeleteUrl,
+  setDeleteText,
 }) => {
   const [messageList, setMessageList] = useState([]);
 
@@ -40,15 +41,12 @@ const MessageCardList = ({
           .sort((a, b) => (a.date < b.date ? 1 : -1))
           .map((message) => (
             <MessageCard
+              BASE_URL={BASE_URL}
               textContent={message}
-              deleteHandle={() =>
-                DELETE(BASE_URL, message.id).then(() => {
-                  setIsModalVisible(false);
-                  setIsPosted(!isPosted);
-                })
-              }
-              isModalVisible={isModalVisible}
               setIsModalVisible={setIsModalVisible}
+              setDeleteId={setDeleteId}
+              setDeleteUrl={setDeleteUrl}
+              setDeleteText={setDeleteText}
               key={message.id}
             />
           ))

@@ -4,21 +4,31 @@ import { POST } from "../../utils/api.js";
 import Button from "../Button";
 import "./index.css";
 
-const AddMessage = ({ BASE_URL, isPosted, setIsPosted }) => {
+const AddMessage = ({ BASE_URL, isPosted, setIsPosted, setIsLoginVisible }) => {
   const [messageText, setMessageText] = useState("");
+
+  const newData = () => {
+    const date = new Intl.DateTimeFormat("it", {
+      timeStyle: "short", //medium for seconds
+      dateStyle: "short",
+    }).format(Date.now());
+    const [day, time] = date.split(" ");
+    return `${day.replace(",", "").split("/").reverse().join("/")} ${time}`;
+  };
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-
     if (messageText) {
-      POST(BASE_URL, {
-        text: messageText,
-        sender: localStorage.getItem("username"),
-        date: new Date().toLocaleDateString(),
-      }).then(() => {
-        setMessageText("");
-        setIsPosted(!isPosted);
-      });
+      localStorage.getItem("username")
+        ? POST(BASE_URL, {
+            text: messageText,
+            sender: localStorage.getItem("username"),
+            date: newData(),
+          }).then(() => {
+            setMessageText("");
+            setIsPosted(!isPosted);
+          })
+        : setIsLoginVisible(true);
     }
   };
 

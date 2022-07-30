@@ -2,7 +2,13 @@ import "./index.css";
 import { useState } from "react";
 import Button from "../Button";
 
-const Modal = ({ textContent, functionHandle, setIsModalVisible, type }) => {
+const Modal = ({
+  textContent,
+  functionHandle,
+  isModalVisible,
+  setIsModalVisible,
+  type,
+}) => {
   const [usernameInput, setUsernameInput] = useState("");
 
   if (type === "login") {
@@ -24,7 +30,7 @@ const Modal = ({ textContent, functionHandle, setIsModalVisible, type }) => {
           className="Modal__login--input"
           type="text"
           value={usernameInput}
-          placeholder="Enter username"
+          placeholder="Anonymous..."
           onChange={(e) => setUsernameInput(e.target.value)}
         />
         <Button
@@ -37,23 +43,25 @@ const Modal = ({ textContent, functionHandle, setIsModalVisible, type }) => {
   }
   if (type === "delete") {
     return (
-      <div className="Modal__overlay">
-        <div className="Modal">
-          <h3 className="Modal__text">{textContent}</h3>
-          <div className="Modal__btns">
-            <Button
-              btnClass="Modal__confirm"
-              textContent="Sì!"
-              onHandleClick={functionHandle}
-            />
-            <Button
-              btnClass="Modal__cancel"
-              textContent="No!"
-              onHandleClick={() => setIsModalVisible(false)}
-            />
+      isModalVisible && (
+        <div className="Modal__overlay">
+          <div className="Modal">
+            <h3 className="Modal__text">{textContent}</h3>
+            <div className="Modal__btns">
+              <Button
+                btnClass="Modal__confirm"
+                textContent="Sì!"
+                onHandleClick={functionHandle}
+              />
+              <Button
+                btnClass="Modal__cancel"
+                textContent="No!"
+                onHandleClick={() => setIsModalVisible(false)}
+              />
+            </div>
           </div>
         </div>
-      </div>
+      )
     );
   }
 };

@@ -1,3 +1,7 @@
+* {
+  margin: 0;
+}
+
 .Navbar {
   display: flex;
   justify-content: space-between;
@@ -12,11 +16,7 @@
   align-items: center;
 }
 
-.Navbar__title {
-  margin: 0;
-}
-
-.Navbar__links {
+.Navbar__user {
   display: flex;
   gap: 10px;
 }

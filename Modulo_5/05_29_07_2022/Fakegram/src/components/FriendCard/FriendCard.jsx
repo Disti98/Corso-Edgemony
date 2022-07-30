@@ -1,13 +1,14 @@
 import Button from "../Button";
-import Modal from "../Modal/Modal";
 import "./index.css";
 
 const FriendCard = ({
+  BASE_URL,
   friend,
   setFilterValue,
-  deleteHandle,
-  isModalVisible,
   setIsModalVisible,
+  setDeleteId,
+  setDeleteUrl,
+  setDeleteText,
 }) => {
   return (
     <div className="FriendCard" onClick={() => setFilterValue(friend.name)}>
@@ -16,16 +17,14 @@ const FriendCard = ({
       <Button
         btnClass="FriendCard__delete"
         textContent="X"
-        onHandleClick={() => setIsModalVisible(true)}
+        onHandleClick={(e) => {
+          e.stopPropagation();
+          setDeleteUrl(BASE_URL);
+          setDeleteText("Sei sicuro di voler eliminare l'amico?");
+          setDeleteId(friend.id);
+          setIsModalVisible(true);
+        }}
       />
-      {isModalVisible && (
-        <Modal
-          textContent={"Sei sicuro di voler eliminare l'amico?"}
-          functionHandle={deleteHandle}
-          setIsModalVisible={setIsModalVisible}
-          type="delete"
-        />
-      )}
     </div>
   );
 };

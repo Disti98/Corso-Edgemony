@@ -1,13 +1,20 @@
 import Button from "../Button";
-import Modal from "../Modal/Modal";
 import "./index.css";
 
 const MessageCard = ({
+  BASE_URL,
   textContent,
-  deleteHandle,
-  isModalVisible,
   setIsModalVisible,
+  setDeleteId,
+  setDeleteUrl,
+  setDeleteText,
 }) => {
+  const formatData = (date) => {
+    const [day, time] = date.split(" ");
+
+    return `${time} ${day.split("/").reverse().join("/")}`;
+  };
+
   return (
     <div className="MessageCard">
       <div className="MessageCard__main">
@@ -15,21 +22,20 @@ const MessageCard = ({
         <Button
           btnClass="MessageCard__delete"
           textContent="X"
-          onHandleClick={() => setIsModalVisible(true)}
+          onHandleClick={() => {
+            setDeleteUrl(BASE_URL);
+            setDeleteText("Sei sicuro di voler eliminare il messaggio?");
+            setDeleteId(textContent.id);
+            setIsModalVisible(true);
+          }}
         />
       </div>
       <div className="MessageCard__info">
         <p className="MessageCard__info--sender">{textContent.sender}</p>
-        <p className="MessageCard__info--date">{textContent.date}</p>
+        <p className="MessageCard__info--date">
+          {formatData(textContent.date)}
+        </p>
       </div>
-      {isModalVisible && (
-        <Modal
-          textContent={"Sei sicuro di voler eliminare il messaggio?"}
-          functionHandle={deleteHandle}
-          setIsModalVisible={setIsModalVisible}
-          type="delete"
-        />
-      )}
     </div>
   );
 };

@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
-import { GET, DELETE } from "../../utils/api";
+import { GET } from "../../utils/api";
 import FriendCard from "../FriendCard";
 import "./index.css";
 
 const FriendCardList = ({
   BASE_URL,
   setFilterValue,
-  update,
   isPosted,
-  setIsPosted,
-  isModalVisible,
   setIsModalVisible,
+  setDeleteId,
+  setDeleteUrl,
+  setDeleteText,
 }) => {
   const [friendList, setFriendList] = useState([]);
 
@@ -25,18 +25,13 @@ const FriendCardList = ({
       {friendList.length ? (
         friendList.map((friend) => (
           <FriendCard
+            BASE_URL={BASE_URL}
             friend={friend}
             setFilterValue={setFilterValue}
-            update={update}
-            deleteHandle={() =>
-              DELETE(BASE_URL, friend.id).then(() => {
-                setIsModalVisible(false);
-                setFilterValue();
-                setIsPosted(!isPosted);
-              })
-            }
-            isModalVisible={isModalVisible}
             setIsModalVisible={setIsModalVisible}
+            setDeleteId={setDeleteId}
+            setDeleteUrl={setDeleteUrl}
+            setDeleteText={setDeleteText}
             key={friend.id}
           />
         ))

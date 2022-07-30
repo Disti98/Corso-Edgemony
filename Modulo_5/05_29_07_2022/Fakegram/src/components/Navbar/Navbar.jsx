@@ -7,8 +7,8 @@ const Navbar = ({ textLogo, setIsLoginVisible }) => {
       <div className="Navbar__main">
         <svg
           id="logo-64"
-          width="80"
-          height="80"
+          width="50"
+          height="50"
           viewBox="0 0 50 50"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -69,20 +69,23 @@ const Navbar = ({ textLogo, setIsLoginVisible }) => {
             fill="black"
           ></path>
         </svg>
-        <h2 className="Navbar__title">{textLogo}</h2>
+        <h3 className="Navbar__title">{textLogo}</h3>
       </div>
-      <Button
-        btnClass="Navbar__btn--login"
-        textContent={localStorage.getItem("username") ? "Sign Out" : "Login"}
-        onHandleClick={
-          localStorage.getItem("username")
-            ? () => {
-                localStorage.removeItem("username");
-                window.location.reload();
-              }
-            : () => setIsLoginVisible(true)
-        }
-      />
+      <div className="Navbar__user">
+        <h4 className="Navbar__username">{localStorage.getItem("username")}</h4>
+        <Button
+          btnClass="Navbar__btn--login"
+          textContent={localStorage.getItem("username") ? "Logout" : "Login"}
+          onHandleClick={
+            localStorage.getItem("username")
+              ? () => {
+                  localStorage.removeItem("username");
+                  window.location.reload();
+                }
+              : () => setIsLoginVisible(true)
+          }
+        />
+      </div>
     </div>
   );
 };
