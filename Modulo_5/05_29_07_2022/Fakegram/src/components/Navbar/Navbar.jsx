@@ -72,6 +72,13 @@ const Navbar = ({ textLogo, setIsLoginVisible }) => {
         <h3 className="Navbar__title">{textLogo}</h3>
       </div>
       <div className="Navbar__user">
+        {localStorage.getItem("user.propic") && (
+          <img
+            className="Navbar__user--propic"
+            src={localStorage.getItem("user.propic")}
+            alt="user propic"
+          />
+        )}
         <h4 className="Navbar__username">{localStorage.getItem("username")}</h4>
         <Button
           btnClass="Navbar__btn--login"
@@ -80,6 +87,7 @@ const Navbar = ({ textLogo, setIsLoginVisible }) => {
             localStorage.getItem("username")
               ? () => {
                   localStorage.removeItem("username");
+                  localStorage.removeItem("user.propic");
                   window.location.reload();
                 }
               : () => setIsLoginVisible(true)

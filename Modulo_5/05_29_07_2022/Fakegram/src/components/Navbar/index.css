@@ -18,5 +18,10 @@
 
 .Navbar__user {
   display: flex;
+  align-items: center;
   gap: 10px;
+}
+
+.Navbar__user--propic {
+  height: 65px;
 }
