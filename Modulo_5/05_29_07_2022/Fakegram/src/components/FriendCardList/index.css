@@ -3,4 +3,10 @@
   flex-direction: column;
   gap: 10px;
   padding-bottom: 20px;
+  overflow-y: scroll;
+  height: calc(100vh - 79px - 134px - 40px - 65px);
+}
+
+.FriendCardList::-webkit-scrollbar {
+  display: none;
 }
