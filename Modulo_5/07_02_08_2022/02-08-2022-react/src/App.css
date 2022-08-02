@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(65, 65, 65);
+}
+
+.App__main {
+  padding: 30px;
+  width: 375px;
+  height: 667px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  background-color: rgb(135, 135, 135);
+}

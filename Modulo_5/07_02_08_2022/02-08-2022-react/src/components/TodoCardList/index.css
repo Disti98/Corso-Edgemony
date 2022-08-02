@@ -1,0 +1,8 @@
+.TodoCardList__main {
+  overflow-y: scroll;
+  height: 100%;
+}
+
+.TodoCardList__main::-webkit-scrollbar {
+  display: none;
+}
